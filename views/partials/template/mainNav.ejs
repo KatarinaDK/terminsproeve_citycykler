@@ -1,0 +1,48 @@
+<!-- b4navbar-placement -->
+<div class="row" id="main-nav-row">
+    <div class="col-md-9" id="main-nav-container">
+        <nav id="main-nav" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+
+            <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav" id="navbar-ul">
+                    <li class="text-center active" id="navbar-li">
+                        <a href="/" class="link">Forsiden</a>
+                    </li>
+
+                    <li class="nav-item dropdown text-center">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/cykler" role="button" aria-haspopup="true" aria-expanded="false">Cykler</a>
+                        <div class="dropdown-menu">
+                            <a href="/cykler">Se alle typer</a>
+                            <% menuTyper.forEach(function(type) { %>
+                                <a href="/cykler/type=<%= type.id %>/offset=0"><%= type.navn %></a>
+                                <% }); %>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown text-center">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/udstyr" role="button" aria-haspopup="true" aria-expanded="false">Udstyr</a>
+                        <div class="dropdown-menu">
+                            <a href="/udstyr">Se alle kategorier</a>
+                            <% menuKategorier.forEach(function(kategori) { %>
+                                <a href="/udstyr/kategori/<%= kategori.id %>"><%= kategori.navn %></a>
+                                <% }); %>
+                        </div>
+                    </li>
+
+                    <li class="text-center" id="navbar-li">
+                        <a href="/kontakt">Kontakt</a>
+                    </li>
+                    <li class="text-center" id="navbar-li">
+                        <a href="/nyheder">Nyheder</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="col-md-3"> </div>
+</div>

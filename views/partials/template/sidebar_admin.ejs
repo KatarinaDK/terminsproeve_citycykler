@@ -1,0 +1,90 @@
+<!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <h3>
+            <span class="nav-profile-img">
+                <img src="/images/nav-profile-img.png" alt="image" style="height: 20px;">
+            </span> Adminpanel</h3>
+        <strong>
+            <span class="nav-profile-img">
+                <img src="/images/nav-profile-img.png" alt="image" style="height: 20px;">
+            </span>
+        </strong>
+    </div>
+
+    <ul class="list-unstyled components">
+        <li>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-home"></i>
+                Admin
+            </a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="/admin/">Forside</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#cykelSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-newspaper"></i>
+                Cykler
+            </a>
+            <ul class="collapse list-unstyled" id="cykelSubmenu">
+                <li>
+                    <a href="/admin/cykel_oversigt">Oversigt</a>
+                </li>
+                <li>
+                    <a href="/admin/cykel_opret">Tilføj ny</a>
+                </li>
+                <li>
+                    <a href="/admin/cykel_aktiver">Aktiver</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#udstyrSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-newspaper"></i>
+                Udstyr
+            </a>
+            <ul class="collapse list-unstyled" id="udstyrSubmenu">
+                <li>
+                    <a href="/admin/udstyr_oversigt">Oversigt</a>
+                </li>
+                <li>
+                    <a href="/admin/udstyr_opret">Tilføj ny</a>
+                </li>
+                <li>
+                    <a href="/admin/udstyr_aktiver">Aktiver</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#sideSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-copy"></i>
+                Sider
+            </a>
+            <ul class="collapse list-unstyled" id="sideSubmenu">
+                <li>
+                    <a href="/admin/side_oversigt">Oversigt</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#kontaktSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-paper-plane"></i>
+                Kontakt
+            </a>
+            <ul class="collapse list-unstyled" id="kontaktSubmenu">
+                <li>
+                    <a href="/admin/kontakt_ret/<%= kontakt.id %>">Ret Kontaktoplysninger</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="/logout">
+                <i class="fas fa-sign-out-alt"></i>
+                Log ud
+            </a>
+        </li>
+    </ul>
+</nav>

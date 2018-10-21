@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+    <div id="top-wrapper">
+        <div class="container" id="top-container">
+            <% include ../../partials/template/header.ejs %>
+        </div>
+    </div>
+    <div id="bottom-wrapper">
+        <div class="container" id="main-container">
+            <% include ../../partials/template/mainNav.ejs %>
+            <div class="row">
+                <div class="col-md-9">
+                    <h1>
+                        <%= cykler.typenavn %>
+                    </h1>
+                    <div class="col-md-12" id="main-content">
+
+
+                        <table class="table table-borderless">
+                            <tbody>
+                                <% cykler.forEach(function(cykel) { %>
+                                <tr class="row justify-content-between" id="tableRowType">
+                                    <td class="col-md-7">
+                                        <h4>
+                                            <%= cykel.producentnavn %>
+                                            <%= cykel.model %>
+                                        </h4>
+
+                                        <% if (cykel.beskrivelse.length > 185) { %>
+                                        <p>
+                                            <%= cykel.beskrivelse.slice(0, 181) %> ...
+                                        </p>
+                                        <% } else { %>
+                                        <p>
+                                            <%= cykel.beskrivelse %>
+                                        </p>
+                                        <% } %>
+
+                                        <div class="row justify-content-between">
+                                            <div class="col-md-4">
+                                                <p>Pris:
+                                                    <%= cykel.pris %> kr.
+                                                </p>
+                                                <% if(cykel.tilbudspris == 0) { %>
+                                                <p>
+                                                </p>
+                                                <% } else { %>
+                                                <p class="cyklenTilbudsTxt">Nu kun:
+                                                    <%= cykel.tilbudspris %> kr.
+                                                </p>
+                                                <% } %>
+                                            </div>
+                                            <div class="col-md-4"><a href="/cykel/<%= cykel.id %>">Mere
+                                                    info
+                                                </a></div>
+
+                                        </div>
+                                    </td>
+                                    <td class="col-md-4">
+                                        <img class="card-img-top img-fluid" src="/images/cykel/original/<%= cykel.url %>"
+                                            alt="<%= cykel.model %>">
+                                    </td>
+                                </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+
+
+
+                        <% for (i = 0; i < antalLink; i ++) { %>
+                        <a class="btn btn-primary" href="/cykler/type=<%= typeID %>/offset=<%= i * limit %>">
+                            <%= i + 1 %>
+                        </a>
+                        <% } %>
+
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h1>Tilbud</h1>
+                    <div class="col-md-12" id="aside-content">
+                        <div id="section-line"></div>
+                        <% include ../../partials/content/tilbud.ejs %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="bottom-container">
+            <% include ../../partials/template/footer.ejs %>
+        </div>
+    </div>
+</body>
+<% include ../../partials/template/scripts.ejs %>
+
+</html>

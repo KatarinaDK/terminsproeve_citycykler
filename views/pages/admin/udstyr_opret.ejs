@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+        <!-- Admin css -->
+        <link rel='stylesheet' href='/stylesheets/admin.css' />
+        <!-- <link rel="stylesheet" href="style4.css"> -->
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+        <div class="wrapper">
+            <!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+            <% include ../../partials/template/sidebar_admin.ejs %>
+
+                <!-- Page Content  -->
+                <div id="content">
+                    <div class="container-fluid">
+
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                            <span> Sidebar</span>
+                        </button>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>
+                                    <%= pageTitle %>
+                                </h1>
+                                <p>Her kan du oprette en nyt stykke udstyr.</p>
+                            </div>
+                            <div class="panel panel-default col-md-12">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Opret udstyr</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <form id="opretProduktForm" method="post" action="/admin/udstyr_opret">
+                                        <div class="row">
+
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="inputProduktnavn">Model</label>
+                                                    <input required type="text" class="form-control" id="inputProduktnavn" name="model">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="inputProducentnavn">Producent</label>
+                                                    <select required class="form-control" id="inputProducentnavn" name="producentnavn">
+                                                        <option value="" selected>Vælg Producent</option>
+                                                        <% producenter.forEach(function(producent) { %>
+                                                            <option value="<%= producent.id %>">
+                                                                <%= producent.navn %>
+                                                            </option>
+                                                            <% }); %>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="inputKategori">Kategori</label>
+                                                    <select required class="form-control" id="inputKategori" name="udstyrskategorinavn">
+                                                        <option value="" selected>Vælg Kategori</option>
+                                                        <% kategorier.forEach(function(kategori) { %>
+                                                            <option value="<%= kategori.id %>">
+                                                                <%= kategori.navn %>
+                                                            </option>
+                                                            <% }); %>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="inputPris">Pris</label>
+                                                    <input required type="number" class="form-control" id="pris" name="pris">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="inputBeskrivelse">Beskrivelse</label>
+                                                    <textarea required class="form-control input-lg" id="inputBeskrivelse" name="beskrivelse"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="inputProduktbilledeFile">Udstyrsbillede</label>
+                                                    </br>
+                                                    <input required type="file" id="inputProduktbilledeFile" name="udstyrsbillede">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <button id="opretKnap" class="btn btn-default" type="submit" name="opretKnap" value="Opret">Opret</button>
+
+
+                                                <p id="formMessage">
+                                                    <%= message %>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <% include ../../partials/template/scripts.ejs %>
+
+
+            <script src='/javascripts/collapseAdminSidebar.js'></script>
+            <!-- <script src='/javascripts/produkt_opret_validering.js'></script> -->
+
+</body>
+
+</html>

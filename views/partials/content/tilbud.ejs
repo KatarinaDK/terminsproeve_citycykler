@@ -1,0 +1,19 @@
+<div class="row">
+    <p><%= tilbudsmessage %></p>
+    <% tilbud.forEach(function(cykel) { %>
+        <div class="card col-md-12 tilbuds-container">
+            <h2>
+                <%=cykel.model%>
+            </h2>
+            <a href="/cykel/<%= cykel.id %>">
+                <img class="card-img-top img-fluid" src="/images/cykel/original/<%= cykel.url %>" alt="<%= cykel.model %>">
+            </a>
+            <div class="card-body">
+                    <p class="card-text text-center">
+                        <strong class="pris">Før: <%= cykel.pris %></strong></br>
+                        <strong class="tilbudspris">Nu: <%= cykel.tilbudspris %></strong>
+                    </p>
+            </div>
+        </div>
+        <% }); %>
+</div>

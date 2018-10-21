@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+        <!-- Admin css -->
+        <link rel='stylesheet' href='/stylesheets/admin.css' />
+        <!-- <link rel="stylesheet" href="style4.css"> -->
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+        <div class="wrapper">
+            <!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+            <% include ../../partials/template/sidebar_admin.ejs %>
+
+                <!-- Page Content  -->
+                <div id="content">
+                    <div class="container-fluid">
+
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                            <span> Sidebar</span>
+                        </button>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Velkommen til Adminpanelet!</h1>
+                                <p>Her kan du redigere, deaktivere, slette og oprette produkter og sider.</p>
+                            </div>
+                            <div class="panel panel-default col-md-6">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Overblik</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <i class="fas fa-user"></i>
+                                            <%= brugerAntal %>
+                                                <a href="#">Brugere</a>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <i class="fas fa-newspaper"></i>
+                                            <%= cykelAntal %>
+                                                <a href="/admin/cykel_oversigt" alt="gå til cykeloversigt" title="Gå til cykeloversigt">Cykler</a>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <i class="fas fa-newspaper"></i>
+                                            <%= cykelAntal %>
+                                                <a href="/admin/cykel_oversigt" alt="gå til cykeloversigt" title="Gå til cykeloversigt">Udstyr</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="panel panel-default col-md-6">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Tilføj Billede</h2>
+                                </div>
+                                <div class="panel-body">
+
+
+
+                                    <form action="/billed_upload" method="post" enctype="multipart/form-data">
+                                        <h3>Billedet vil blive lagret i upload-folderen</h3>
+                                        <div class="empty_space"></div>
+                                        <input multiple required id="upload__image" type="file" name="images">
+                                        <div class="empty_space"></div>
+                                        <input class="btn btn-default" type="submit" value="Upload Billede">
+                                    </form>
+
+
+                                    
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+       
+                <% include ../../partials/template/scripts.ejs %>
+
+                    <script src='/javascripts/collapseAdminSidebar.js'></script>
+
+</body>
+
+</html>

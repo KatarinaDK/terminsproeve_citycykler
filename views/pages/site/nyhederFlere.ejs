@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+        <div id="top-wrapper">
+            <div class="container" id="top-container">
+                <% include ../../partials/template/header.ejs %>
+            </div>
+        </div>
+        <div id="bottom-wrapper">
+            <div class="container" id="main-container">
+                <% include ../../partials/template/mainNav.ejs %>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h1>
+                                <%= pageTitle %>
+                            </h1>
+                            <div class="col-md-12" id="main-content">
+
+
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <% nyheder.forEach(function(nyhed) { %>
+                                            <tr class="row justify-content-between" id="tableRowType">
+                                                <td class="col-md-7">
+                                                    <h4>
+                                                        <%= nyhed.producent %>
+                                                            <%= nyhed.model %>
+                                                    </h4>
+                                                    <p>
+                                                        <%= nyhed.beskrivelse %>
+                                                    </p>
+                                                    <p>Pris:
+                                                        <%= nyhed.pris %> kr.
+                                                    </p>
+                                                    <% if(nyhed.tilbudspris == 0) { %>
+                                                        <p>
+                                                        </p>
+                                                        <% } else { %>
+                                                            <p class="cyklenTilbudsTxt">Nu kun:
+                                                                <%= nyhed.tilbudspris %> kr.
+                                                            </p>
+                                                            <% } %>
+                                                                <div class="row justify-content-between">
+                                                                    <div class="col-md-4">
+                                                                        <%= nyhed.dato %>
+                                                                    </div>
+                                                                    <div class="col-md-4"><a href="/cykel/<%= nyhed.id %>">Mere
+                                                                            info
+                                                                        </a></div>
+
+                                                                </div>
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <img class="card-img-top img-fluid" src="/images/cykel/original/<%= nyhed.url %>" alt="<%= nyhed.model %>">
+                                                </td>
+                                            </tr>
+                                            <% }); %>
+                                    </tbody>
+                                </table>
+                                <a id="flereNyhederLink" href="/flereNyheder">
+                                    <p class="text-right">
+                                        Se flere nyheder
+                                    </p></a>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h1>Tilbud</h1>
+                            <div class="col-md-12" id="aside-content">
+                                <div id="section-line"></div>
+                                <% include ../../partials/content/tilbud.ejs %>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="container" id="bottom-container">
+                <% include ../../partials/template/footer.ejs %>
+            </div>
+        </div>
+</body>
+<% include ../../partials/template/scripts.ejs %>
+
+</html>

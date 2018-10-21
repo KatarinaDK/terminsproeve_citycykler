@@ -1,0 +1,33 @@
+{
+  "name": "citycykler",
+  "description": "Min webintegrator terminsprøve aug-sept 2018",
+  "author": "Katarina Petersen",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^11.0.1",
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.3",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "express-session": "^1.15.6",
+    "formidable": "^1.2.1",
+    "morgan": "^1.9.0",
+    "mysql2": "^1.5.3",
+    "nodemon": "^1.17.5",
+    "sharp": "^0.20.8"
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KatarinaDK/terminsproeve_citycykler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KatarinaDK/terminsproeve_citycykler/issues"
+  },
+  "homepage": "https://github.com/KatarinaDK/terminsproeve_citycykler#readme"
+}

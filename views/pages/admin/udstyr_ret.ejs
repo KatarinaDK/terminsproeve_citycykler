@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+        <!-- Admin css -->
+        <link rel='stylesheet' href='/stylesheets/admin.css' />
+        <!-- <link rel="stylesheet" href="style4.css"> -->
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+        <div class="wrapper">
+            <!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+            <% include ../../partials/template/sidebar_admin.ejs %>
+
+                <!-- Page Content  -->
+                <div id="content">
+                    <div class="container-fluid">
+
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                            <span> Sidebar</span>
+                        </button>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>
+                                    <%= pageTitle %>
+                                </h1>
+                                <p>Her kan du rette et eksisterende stykke udstyr.</p>
+                            </div>
+                            <div class="panel panel-default col-md-12">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Ret udstyr</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <form id="retProduktForm" method="post" action="/admin/udstyr_ret/<%= udstyr.id %>">
+                                        <div class="row">
+
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="inputModelnavn">Model</label>
+                                                    <input required type="text" class="form-control" id="inputModelnavn" name="model" value="<%= udstyr.model %>">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="inputProducentnavn">Producent</label>
+                                                    <select class="form-control" id="inputProducentnavn" name="producentnavn">
+                                                        <option>Vælg Producent</option>
+                                                        <% producenter.forEach(function(producent) { 
+                                                            if (producent.navn == udstyr.producentnavn) { %>
+                                                            <option value="<%= producent.id %>" selected>
+                                                                <%= producent.navn %>
+                                                            </option>
+                                                            <% } else { %>
+                                                                <option value="<%= producent.id %>">
+                                                                    <%= producent.navn %>
+                                                                </option>
+                                                                <% } %>
+                                                                    <% }); %>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="inputKategorinavn">Kategori</label>
+                                                    <select class="form-control" id="inputKategorinavn" name="udstyrskategorinavn">
+                                                        <option>Vælg Kategori</option>
+                                                        <% kategorier.forEach(function(kategori) { 
+                                                            if (kategori.navn == udstyr.kategorinavn) { %>
+                                                            <option value="<%= kategori.id %>" selected>
+                                                                <%= kategori.navn %>
+                                                            </option>
+                                                            <% } else { %>
+                                                                <option value="<%= kategori.id %>">
+                                                                    <%= kategori.navn %>
+                                                                </option>
+                                                                <% } %>
+                                                                    <% }); %>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="pris">Pris</label>
+                                                    <input required type="number" class="form-control" id="pris" name="pris" value="<%= udstyr.pris %>">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="inputBeskrivelse">Beskrivelse</label>
+                                                    <textarea required class="form-control input-lg" id="inputBeskrivelse" name="beskrivelse"><%= udstyr.beskrivelse %></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="inputProduktbilledeFile">Udstyrsbillede
+                                                        <small>(Lad feltet stå tomt, hvis du ikke vil ændre billedet)</small>
+                                                    </label>
+                                                    </br>
+                                                    <input type="file" id="inputProduktbilledeFile" name="udstyrsbillede">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <button href="/admin/udstyr_ret/<%= udstyr.id %>" id="retKnap" class="btn btn-default" type="submit" name="retKnap" value="ret"
+                                                    onclick="return confirmAction('Er du sikker på du vil rette <%=udstyr.model%>?')">Ret</button>
+
+
+                                                <p id="formMessage">
+                                                    <%= message %>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <% include ../../partials/template/scripts.ejs %>
+
+            <!-- Confirm delete -->
+            <script src='/javascripts/confirmAction.js'></script>
+            <script src='/javascripts/collapseAdminSidebar.js'></script>
+
+</body>
+
+</html>

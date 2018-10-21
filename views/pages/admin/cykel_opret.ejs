@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+        <!-- Admin css -->
+        <link rel='stylesheet' href='/stylesheets/admin.css' />
+        <!-- <link rel="stylesheet" href="style4.css"> -->
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+        <div class="wrapper">
+            <!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+            <% include ../../partials/template/sidebar_admin.ejs %>
+
+                <!-- Page Content  -->
+                <div id="content">
+                    <div class="container-fluid">
+
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                            <span> Sidebar</span>
+                        </button>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>
+                                    <%= pageTitle %>
+                                </h1>
+                                <p>Her kan du oprette en ny cykel.</p>
+                            </div>
+                            <div class="panel panel-default col-md-12">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Opret cykel</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <form id="opretProduktForm" method="post" action="/admin/cykel_opret">
+                                        <div class="row">
+
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="inputProduktnavn">Model</label>
+                                                    <input required type="text" class="form-control" id="inputProduktnavn" name="model">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="inputProducentnavn">Producent</label>
+                                                    <select required class="form-control" id="inputProducentnavn" name="producentnavn">
+                                                        <option value="" selected>Vælg Producent</option>
+                                                        <% producenter.forEach(function(producent) { %>
+                                                            <option value="<%= producent.id %>">
+                                                                <%= producent.navn %>
+                                                            </option>
+                                                            <% }); %>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="inputTypenavn">Type</label>
+                                                    <select required class="form-control" id="inputTypenavn" name="cykeltypenavn">
+                                                        <option value="" selected>Vælg Type</option>
+                                                        <% typer.forEach(function(type) { %>
+                                                            <option value="<%= type.id %>">
+                                                                <%= type.navn %>
+                                                            </option>
+                                                            <% }); %>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="inputPris">Pris</label>
+                                                    <input required type="number" class="form-control" id="pris" name="pris">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="inputTilbudsPris">Tilbudspris <small>(Sæt værdien til 0,
+                                                            hvis cyklen ikke skal på tilbud)</small></label>
+                                                    <input type="number" class="form-control" id="inputTilbudsPris" name="tilbudspris" value="">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="inputBeskrivelse">Beskrivelse</label>
+                                                    <textarea required class="form-control input-lg" id="inputBeskrivelse" name="beskrivelse"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="inputProduktbilledeFile">Cykelbillede</label>
+                                                    </br>
+                                                    <input required type="file" id="inputProduktbilledeFile" name="cykelbillede">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group"></div>
+                                                <div class="form-check form-check-inline">
+                                                    <label class="form-check-label">Farve (Kan ikke sende farve med pt!)</br>
+                                                        <% farver.forEach(function(farve) { %>
+                                                            <input class="form-check-input" type="checkbox" id="inlineCheckboxFarve" value="<%= farve.id %>"><%= farve.navn %>
+                                                                <% }); %>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <button id="opretKnap" class="btn btn-default" type="submit" name="opretKnap" value="Opret">Opret</button>
+                                                <p id="formMessage">
+                                                    <%= message %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+
+        <% include ../../partials/template/scripts.ejs %>
+
+
+            <script src='/javascripts/collapseAdminSidebar.js'></script>
+            <!-- <script src='/javascripts/produkt_opret_validering.js'></script> -->
+
+</body>
+
+</html>

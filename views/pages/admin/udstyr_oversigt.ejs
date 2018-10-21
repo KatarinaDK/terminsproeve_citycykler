@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+        <!-- Admin css -->
+        <link rel='stylesheet' href='/stylesheets/admin.css' />
+        <!-- <link rel="stylesheet" href="style4.css"> -->
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+        <div class="wrapper">
+            <!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+            <% include ../../partials/template/sidebar_admin.ejs %>
+
+                <!-- Page Content  -->
+                <div id="content">
+                    <div class="container-fluid">
+
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                            <span> Sidebar</span>
+                        </button>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>
+                                    <%= pageTitle %>
+                                </h1>
+                                <p>Her kan du redigere, deaktivere, slette og se alle stykker udstyr.</p>
+                            </div>
+                            <div class="panel panel-default col-md-12">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Overblik</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">Model</th>
+                                                <th scope="col">Producent</th>
+                                                <th scope="col">Tilpas</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% udstyr.forEach(function(udstyret) { %>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <img class="img-responsive" src="/images/udstyr/original/<%= udstyret.url %>" alt="<%= udstyret.model %>"
+                                                            style="height:20px">
+                                                    </th>
+                                                    <td>
+                                                        <%=udstyret.model%>
+                                                    </td>
+                                                    <td class="text-capitalize">
+                                                        <%=udstyret.producent%>
+                                                    </td>
+                                                    <td>
+                                                        <a class="produkt-table-link" href="/admin/udstyr_ret/<%= udstyret.id %>" alt="ret udstyret" title="Ret udstyret">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <a class="produkt-table-link" href="/admin/udstyr_arkiver/<%= udstyret.id %>" alt="arkiver udstyret" title="Arkiver udstyret"
+                                                            onclick="return confirmAction('Er du sikker på du vil arkivere <%=udstyret.model%>? Udstyret vil stadig befinde sig i databasen, men vil ikke længere være synlig i sortimentet.')">
+                                                            <i class="fas fa-archive"></i>
+                                                        </a>
+                                                        <a class="produkt-table-link" href="/admin/udstyr_slet/<%= udstyret.id %>" alt="slet udstyret" title="Slet udstyret" onclick="return confirmAction('Er du sikker på du vil slette <%=udstyret.model%>? Udstyret vil blive slettet i databasen og vil ikke længere være tilgængeligt.')">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <% }); %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <% include ../../partials/template/scripts.ejs %>
+
+            <script src='/javascripts/confirmAction.js'></script>
+            <script src='/javascripts/collapseAdminSidebar.js'></script>
+</body>
+
+</html>

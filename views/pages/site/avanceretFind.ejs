@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+    <div id="top-wrapper">
+        <div class="container" id="top-container">
+            <% include ../../partials/template/header.ejs %>
+        </div>
+    </div>
+    <div id="bottom-wrapper">
+        <div class="container" id="main-container">
+            <% include ../../partials/template/mainNav.ejs %>
+            <div class="row">
+                <div class="col-md-9">
+                    <h1>
+                        <%= pageTitle %>
+                    </h1>
+                    <div class="col-md-12" id="main-content">
+                        <form class="form-inline" id="advancedSearch" method="get" action="/avanceretFind" onSubmit="return formular(this);">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="formSelectKategori" class="col-sm-2 col-form-label">Kategori</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control" id="formSelectKategori" name="cykeltype">
+                                                <option value="">--Vælg--</option>
+                                                <% typeOptions.forEach(function(type) { %>
+                                                <option value="<%= type.id %>">
+                                                    <%= type.navn %>
+                                                </option>
+                                                <% }) %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="formSelectProducent" class="col-md-2 col-form-label">Mærke</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control" id="formSelectProducent" name="producent">
+                                                <option value="">--Vælg--</option>
+                                                <% producentOptions.forEach(function(producent) { %>
+                                                <option value="<%= producent.id %>">
+                                                    <%= producent.navn %>
+                                                </option>
+                                                <% }) %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="inputPris" class="col-md-2 col-form-label">Maxpris</label>
+                                        <div class="col-md-10">
+                                            <input type="number" class="form-control" id="inputPris" name="pris">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputFritekst" class="col-md-2 col-form-label">Søgeord</label>
+                                        <div class="col-md-10">
+                                            <input required type="text" class="form-control" id="inputFritekst" name="fritekst" value="<%= fritekst_value %>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-default" id="btnAdvancedSearch">Søg</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <table class="table table-borderless">
+                            <tbody>
+                                <% cykler.forEach(function(cykel) { %>
+                                <tr class="row justify-content-between" id="tableRowSearch">
+                                    <td class="col-md-7">
+                                        <h4>
+                                            <%= cykel.model %>
+                                        </h4>
+
+                                        <% if (cykel.beskrivelse.length > 185) { %>
+                                        <p>
+                                            <%= cykel.beskrivelse.slice(0, 181) %> ...
+                                        </p>
+                                        <% } else { %>
+                                        <p>
+                                            <%= cykel.beskrivelse %>
+                                        </p>
+                                        <% } %>
+
+                                        <div class="row justify-content-between">
+                                            <div class="col-md-4">Pris:
+                                                <%= cykel.pris %> kr.
+
+                                                <% if(cykel.tilbudspris == 0) { %>
+                                                <p>
+                                                </p>
+                                                <% } else { %>
+                                                <p class="cyklenTilbudsTxt">Nu kun:
+                                                    <%= cykel.tilbudspris %> kr.
+                                                </p>
+                                                <% } %>
+                                            </div>
+                                            <div class="col-md-4"><a href="/cykel/<%= cykel.id %>">Mere
+                                                    info
+                                                </a></div>
+                                        </div>
+                                    </td>
+                                    <td class="col-md-4">
+                                        <img class="card-img-top img-fluid" src="/images/cykel/original/<%= cykel.url %>"
+                                            alt="<%= cykel.model %>">
+                                    </td>
+                                </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h1>Tilbud</h1>
+                    <div class="col-md-12" id="aside-content">
+                        <div id="section-line"></div>
+                        <% include ../../partials/content/tilbud.ejs %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="bottom-container">
+            <% include ../../partials/template/footer.ejs %>
+        </div>
+    </div>
+</body>
+<% include ../../partials/template/scripts.ejs %>
+
+</html>

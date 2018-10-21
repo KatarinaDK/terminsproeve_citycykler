@@ -1,0 +1,20 @@
+<!-- Navigation -->
+
+<% if (pageTitle == 'Forsiden' || pageTitle == 'Cykler' || pageTitle == 'Cykeltype' || pageTitle == 'Kontakt' || pageTitle == 'Avanceret søgning' || pageTitle == 'Mere info' || pageTitle == 'Nyheder' || pageTitle == 'Flere nyheder' || pageTitle == 'Udstyr' || pageTitle == 'Udstyrskategori') { %>
+    <nav id="admin-nav" class="navbar navbar-expand-lg sticky-top"> <!-- style="display:none" tilføjes senere. Bygges på sammen med js for at styre synligheden, afhængig af om man er logget på eller ej-->
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                    <a class="nav-link" href="/admin">Gå til Adminpanel</a>
+            </li>
+        </ul>
+    </nav>
+<% } %>
+<% if (pageTitle == 'Adminpanel' || pageTitle == 'Cykeloversigt' || pageTitle == 'Cykeloprettelse' || pageTitle == 'Cykelredigering' || pageTitle == 'Cykelaktivering' || pageTitle == 'Udstyrsoversigt' || pageTitle == 'Udstyrsoprettelse' || pageTitle == 'Udstyrsredigering' || pageTitle == 'Udstyrsaktivering' || pageTitle == 'Kontaktredigering' || pageTitle == 'Sideoversigt' || pageTitle == 'Sideredigering') { %>
+    <nav id="admin-nav" class="navbar navbar-expand-lg sticky-top">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                    <a class="nav-link" href="/">Gå til Forside</a>
+            </li>
+        </ul>
+    </nav>
+<% } %>

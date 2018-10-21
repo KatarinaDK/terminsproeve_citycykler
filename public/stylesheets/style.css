@@ -1,0 +1,317 @@
+/* ------------------------------------------------------------------------------------------------------
+FASTE ELEMENTER
+------------------------------------------------------------------------------------------------------ */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+/* ---------------------------------------------------
+TYPOGRAPHY
+----------------------------------------------------- */
+
+#main-container h1 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FF9E41;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.type-container h2, .tilbuds-container h2{
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+#kontakt-content h3, #tableRowSearch h4, #tableRowType h4, #tableRowCykel h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FF9E41;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+#tableRowCykel h2 {
+  margin-bottom: 15px;
+}
+
+#kontakt-content p {
+  font-size: 12px;
+}
+
+.tilbuds-container .pris {
+  text-decoration: line-through;
+}
+
+.tilbuds-container .tilbudspris, .cyklenTilbudsTxt {
+  color:red;
+}
+
+#footer p, .cyklenTilbudsTxt {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------
+WRAPPERS
+----------------------------------------------------- */
+#top-wrapper {
+  background-color: #C7CBCC;
+  padding:  40px 20px 0 20px;
+  border-bottom: 2px solid #FFFFFF;
+}
+
+#bottom-wrapper {
+  background-color: #E1E2E2;
+  padding: 0 20px 100px 20px;
+}
+
+/* ---------------------------------------------------
+CONTAINERS
+----------------------------------------------------- */
+#top-container, #main-container, #bottom-container {
+  max-width: 1000px;
+}
+
+#main-container {
+  margin-top: -2px;
+  padding-bottom: 30px;
+  min-height: 418px;
+}
+
+.tilbuds-container {
+  border: 2px solid #EDEDED;
+  margin-bottom: 15px;
+}
+
+/* ---------------------------------------------------
+    HEADER ADMIN
+----------------------------------------------------- */
+#admin-nav{
+  background-color: #000000;
+  color: #FFFFFF;
+  height: 28px;
+  margin-bottom: 0;
+}
+#admin-nav a{
+  color: #FFFFFF  !important;
+}
+
+/* ---------------------------------------------------
+HEADER
+----------------------------------------------------- */
+#header {
+  background-image: url("../images/banner.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* ---------------------------------------------------
+SEARCH
+----------------------------------------------------- */
+#tableRowSearch {
+  border: 2px solid #EDEDED;
+  margin-bottom: 15px;
+}
+
+#tableRowSearch a {
+  text-decoration: underline;
+  font-weight: 700;
+  color: #FF9E41;
+}
+
+#basicSearch {
+  margin-top: 50px;
+  margin-right: 20px;
+}
+
+#advancedSearch {
+  margin-bottom: 20px;
+}
+
+#basicSearch input{
+  font-size: 12px;
+  height: 28px;
+  margin-right: 20px;
+}
+
+#formSelectKategori, #formSelectProducent, #inputPris, #inputFritekst {
+  font-size: 12px;
+  height: 28px;
+  margin-bottom: 10px;
+}
+
+#btnBasicSearch {
+  font-size: 12px;
+  height: 28px;
+  width: 60px;
+  padding: 0;
+  margin: 0px 10px 32px 0px;
+}
+
+#btnAdvancedSearch {
+  font-size: 12px;
+  height: 28px;
+  width: 60px;
+}
+
+#top-wrapper a {
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
+/* ---------------------------------------------------
+MAIN NAVIGATIONS MENU
+----------------------------------------------------- */
+#main-nav-container, #main-nav {
+  padding:0;
+}
+
+#main-nav-row {
+  background-color: #C9CACC;
+  margin-bottom: 15px;
+}
+
+#main-nav-row .col-md-9, #main-nav-row .col-md-3 {
+  margin-top: -1px;
+  height:28px;
+}
+
+#navbar-ul li {
+  width: 150px;
+  border-right: 2px solid rgb(148, 152, 153);
+}
+
+#navbar-ul li a {
+  font-size: 12px;
+  display: block;
+  height: 27px;
+  color: #000000;
+  text-decoration: none;
+  background-color: #C9CACC;
+  margin-top: 1px;
+  padding-top: 5px;
+}
+
+#navbar-ul li a:hover {
+  color: #FFFFFF;
+  background-color: #767676;
+}
+
+#navbar-ul li.active > a {
+	color: #FFFFFF;
+	background-color: #000000;
+}
+
+.dropdown-menu.show {
+  display: block;
+  background-color: #C9CACC;
+  padding-left: 15px;
+}
+
+/* ---------------------------------------------------
+MAIN OG ASIDE
+----------------------------------------------------- */
+#main-container {
+  background-color: #FFFFFF;
+}
+
+#main-content, #aside-content {
+  border-top: 2px solid #EDEDED;
+  padding-top: 15px;
+}
+
+#aside-content {
+  position: relative;
+  padding: 9px 18px;
+}
+
+#section-line {
+  background-color: #EDEDED;
+  left: -15px;
+  width: 2px;
+  display: block;
+  position: absolute;
+  height: 45vh;
+}
+
+/* ---------------------------------------------------
+TILBUD
+----------------------------------------------------- */
+.tilbuds-container {
+  padding-top: 10px;
+}
+
+
+/* ---------------------------------------------------
+    FOOTER
+----------------------------------------------------- */
+#footer{
+  color: #A4A4A4;
+  background-color: #C9CACC;
+  height: 28px;
+  padding-top: 5px;
+  border-radius: 0px 0px 10px 10px;
+}
+
+/* ------------------------------------------------------------------------------------------------------
+CYKELTYPE SIDE
+------------------------------------------------------------------------------------------------------ */
+.type-container {
+  border: none;
+  margin-bottom: 25px;
+}
+
+#tableRowType {
+  border: 2px solid #EDEDED;
+  margin-bottom: 15px;
+}
+
+#tableRowType a {
+  text-decoration: underline;
+  font-weight: 700;
+  color: #FF9E41;
+}
+
+/* ------------------------------------------------------------------------------------------------------
+CYKEL SIDE
+------------------------------------------------------------------------------------------------------ */
+
+#cykel-img {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.farve-img {
+  margin: 0 5px 0 0 !important;
+}
+
+/* ------------------------------------------------------------------------------------------------------
+KONTAKT SIDE
+------------------------------------------------------------------------------------------------------ */
+#kontakt-content {
+  padding: 20px 0px 0px 60px;
+}
+
+#kontakt-img{
+  width: 290px;
+}
+
+/* ------------------------------------------------------------------------------------------------------
+NYHED SIDE
+------------------------------------------------------------------------------------------------------ */
+#flereNyhederLink {
+  text-decoration: underline;
+  font-weight: 700;
+  color: #FF9E41;
+}
+
+/* ---------------------------------------------------
+    GENERAL STYLING
+----------------------------------------------------- */
+.empty_space {
+  height: 40px;
+} 

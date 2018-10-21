@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+        <div id="top-wrapper">
+            <div class="container" id="top-container">
+                <% include ../../partials/template/header.ejs %>
+            </div>
+        </div>
+        <div id="bottom-wrapper">
+            <div class="container" id="main-container">
+                <% include ../../partials/template/mainNav.ejs %>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h1>
+                                <%= pageTitle %>
+                            </h1>
+                            <div class="col-md-12" id="main-content">
+                                <div class="row">
+                                    <% kategorier.forEach(function(kategori) { %>
+                                        <div class="card col-md-4 type-container">
+                                            <a href="/udstyr/kategori/<%= kategori.id %>">
+                                                <div class="card-body text-center">
+                                                    <h2>
+                                                        <%=kategori.navn%>
+                                                    </h2>
+                                                </div>
+                                                <img class="card-img-top img-fluid" src="/images/udstyrskategori/<%= kategori.url %>" alt="<%= kategori.model %>">
+                                            </a>
+                                        </div>
+                                        <% }); %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h1>Tilbud</h1>
+                            <div class="col-md-12" id="aside-content">
+                                <div id="section-line"></div>
+                                <% include ../../partials/content/tilbud.ejs %>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="container" id="bottom-container">
+                <% include ../../partials/template/footer.ejs %>
+            </div>
+        </div>
+</body>
+<% include ../../partials/template/scripts.ejs %>
+
+</html>
