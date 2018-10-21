@@ -34,12 +34,12 @@ module.exports = (app) => {
   // Sender data til db
   // Som en ekstra sikkerhed valideres der inden data sendes afsted og i tilfælde af at clienside valideringen ikke virker
   app.post('/admin/cykel_ret/:id', async (req, res) => {
-    try {
+    // try {
       
       
       // undersøg om der er indtastet et nyt navn og om det findes i et andet produkt
       let originalProdukt = await cykel.getOne(req.params.id);
-      let originalProduktnavn = originalProdukt[ 0 ].model;
+      let originalProduktnavn = originalProdukt.model;
       let nytProduktnavn = req.body.model;
       
       let cyklerne = await cykel.getAll_cykelmodelAntal(nytProduktnavn);
@@ -77,10 +77,10 @@ module.exports = (app) => {
           code: 1
         });
       }
-    }
-    catch (e) {
-      res.send(e)
-      console.log(e.name);
-    }
+    // }
+    // catch (e) {
+    //   res.send(e)
+    //   console.log(e.name);
+    // }
   });
 } 

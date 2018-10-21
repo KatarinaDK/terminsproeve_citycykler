@@ -28,7 +28,7 @@ const side = require('../../services/side');
   
     try {
       
-      await side.updateOne(req.params.id, req.body.afsnit, req.body.forsidebillede);
+      await side.updateOne(req.params.id, req.body.afsnit1, req.body.afsnit2, req.body.afsnit3, req.body.afsnit4, req.body.afsnit5, req.body.forsidebillede);
 
       res.redirect('/admin/side_oversigt');
       

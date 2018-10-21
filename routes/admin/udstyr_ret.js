@@ -38,7 +38,7 @@ module.exports = (app) => {
       // Undersøg om der er indtastet et nyt navn og om det findes i et andet produkt
 
       let originalProdukt = await udstyr.getOne(req.params.id);
-      let originalProduktnavn = originalProdukt[ 0 ].model;
+      let originalProduktnavn = originalProdukt.model;
       let nytProduktnavn = req.body.model;
       let udstyret = await udstyr.getAll_udstyrsmodelAntal(nytProduktnavn);
       let nytprodukt = udstyret[ 0 ].antal == 0;
