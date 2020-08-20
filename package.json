@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^11.0.1",
-    "bcrypt": "^2.0.1",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
